@@ -47,7 +47,7 @@ jobs:
       - name: Install requirements
         run: |
           ls -la
-          ssh venn "rsync -rsP ./book/ root@wiki.venn.dev:/var/www/wiki.venn.dev/html"
+          rsync -rsP ./book/ root@wiki.venn.dev:/var/www/wiki.venn.dev/html
 
       - name: Reload nginx
         run: ssh venn "systemctl reload nginx"
