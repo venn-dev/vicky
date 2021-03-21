@@ -27,13 +27,13 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/venn.key
-          chmod 600 ~/.ssh/venn.key
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           cat >> ~/.ssh/config << EOF
           Host venn
             HostName wiki.venn.dev
             User root
-            IdentityFile ~/.ssh/venn.key
+            IdentityFile ~/.ssh/id_rsa
             StrictHostKeyChecking no
           EOF
         env:
