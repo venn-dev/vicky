@@ -7,16 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install mdbook
-      run: |
-        wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz
-        tar -xzvf mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz
-
   deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
@@ -36,6 +26,11 @@ jobs:
           EOF
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+
+      - name: Install mdbook
+        run: |
+          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzvf mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz
 
       - name: Build site
         run: ./mdbook build
