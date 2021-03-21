@@ -105,7 +105,7 @@ To run a job only on master, we use `if: github.ref == 'refs/heads/master'`.
 
 If you're doing a static website, then it can be like this:
 
-```
+```yml
 name: Deploy mdBook
 
 on:
