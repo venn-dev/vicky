@@ -46,9 +46,9 @@ count = fromIntegral . length :: [a] -> Float
 ?? returns the percentage of elements in `p` that are equal to `x`.
 
 ```haskell
-Prelude System.Random System.Random> (["on"] >>= turn >>= turn >>= turn) ?? "off"
+> (["on"] >>= turn >>= turn >>= turn) ?? "off"
 41.666666666666664
-Prelude System.Random System.Random> (["on"] >>= turn >>= turn >>= turn) ?? "on"
+> (["on"] >>= turn >>= turn >>= turn) ?? "on"
 58.333333333333336
 ```
 
@@ -66,7 +66,7 @@ let vprob x = if x == "healthy" then ["healthy", "healthy", "healthy", "sick"] e
 What's the probability one will die after 10 days?
 
 ```haskell
-Prelude System.Random System.Random> p ?? "dead"
+> p ?? "dead"
 2.2962844
 ````
 
