@@ -70,10 +70,11 @@ What's the probability one will die after 10 days?
 2.2962844
 ````
 
-Okay, okay, haskell is full of tricks, what do I care. Well, if you understand how this works, yuo can do this in python too.
+Okay, okay, haskell is full of tricks, what do I care. Well, if you understand how this works, you can do this in python too.
 
-We could call `>>=` function `apply` (haskellers: I know apply is a different function, sssh). Apply takes a function that transforms a list and the list and returns the new ilst.
-The transforming function will take one element from the list and return all future states. So, for each previous states, we get a list of new states, therefore we will flatten the result.
+We could call `>>=` function `apply` (haskellers: I know apply is a different function, sssh). Apply takes a function that transforms a list and the list and returns the new list.
+
+The transforming function will take one element from the list and return all future states. So, for each previous state, we get a list of new states, therefore we will flatten the result.
 
 ```python
 def flatten(l): return sum(l, [])
