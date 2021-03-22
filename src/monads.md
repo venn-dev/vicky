@@ -17,7 +17,9 @@ What happens if we start from an "on" position after one turn?
 ["off","on"]
 ```
 
-1/2 cases it was off, 1/2 it was off. Okay.
+The values in the list signify all the probable current states (and not a particular state nor the states that we passed from), starting from the `on` state and after one turn.
+
+So, 1/2 cases it was off, 1/2 it was off. Okay.
 
 What about after two turns?
 
@@ -26,14 +28,14 @@ What about after two turns?
 ["on","on","off","off","on"]
 ```
 
-Okay, 2/3 on, 1/3 off.
+Okay, 2/3 chance to be on, 1/3 off.
 
 ```haskell
 > ["on"] >>= turn >>= turn >>= turn
 ["off","on","off","on","on","on","off","on","on","off","off","on"]
 ```
 
-After three turns it's a bit hard to figure out what's going on so, let build a function for asking the probability of a state.
+After three turns it's a bit hard to figure out what's going on so, let's build a function for asking the probability of a state.
 
 ```haskell
 count = fromIntegral . length :: [a] -> Float
@@ -41,9 +43,9 @@ count = fromIntegral . length :: [a] -> Float
 (??) p x = 100 * (count (filter (== x) p)) / (count p)
 ```
 
-`count` is just a wrapper around length that returns a Float instead of an Int.
+`??` returns the percentage of elements in `p` that are equal to `x`.
 
-?? returns the percentage of elements in `p` that are equal to `x`.
+`count` is just a wrapper around length that returns a Float instead of an Int.
 
 ```haskell
 > (["on"] >>= turn >>= turn >>= turn) ?? "off"
@@ -66,6 +68,7 @@ let vprob x = if x == "healthy" then ["healthy", "healthy", "healthy", "sick"] e
 What's the probability one will die after 10 days?
 
 ```haskell
+> let p = ["healthy"] >>= gen >>= gen >>= gen >>= gen >>= gen >>= gen >>= gen >>= gen >>= gen >>= gen
 > p ?? "dead"
 2.2962844
 ````
