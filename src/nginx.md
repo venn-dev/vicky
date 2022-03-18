@@ -6,9 +6,19 @@
 * [nginxconfig](https://www.digitalocean.com/community/tools/nginx)
 * [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/)
 
-## Sane default configurations
+## Sane default configuration examples
 
 ### `/etc/nginx/sites-available/example-static.com.conf` for fully static website
+
+* Two `server` directives, one SSL, one non-SSL.
+* non-SSL redirects everything except for Let's Encrypt challenge
+(at `/.well-known/acme-challenge/`) to the SSL `server`.
+* SSL cert and key are located in default [certbot](https://certbot.eff.org/)
+location: `/etc/letsencrypt/live/<website-name>/fullchain.pem`.
+* HTTP2 enabled.
+* Some security headers enabled.
+* No dotfiles serving.
+* Separate log files for each `server`.
 
 ```
 server {
@@ -84,6 +94,21 @@ server {
 ```
 
 ### `/etc/nginx/sites-available/example-uwsgi-django.com.conf` for Django + uWSGI
+
+* Two `server` directives, one SSL, one non-SSL.
+* non-SSL redirects everything except for Let's Encrypt challenge
+(at `/.well-known/acme-challenge/`) to the SSL `server`.
+* SSL cert and key are located in default [certbot](https://certbot.eff.org/)
+location: `/etc/letsencrypt/live/<website-name>/fullchain.pem`.
+* HTTP2 enabled.
+* Some security headers enabled along with [HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security).
+* No dotfiles serving.
+* Separate log files for each `server`.
+* uWSGI configuration using unix sockets
+([nginx docs](https://docs.nginx.com/nginx/admin-guide/web-server/app-gateway-uwsgi-django),
+[uwsgi docs](https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html)).
+* Configured for serving Django static files. See [here](django.md) for how to
+configure Django for static files.
 
 ```
 server {
