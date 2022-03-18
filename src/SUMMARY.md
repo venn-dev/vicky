@@ -8,3 +8,4 @@
 - [Monads](./monads.md)
 - [Postgresql](./postgresql.md)
 - [nginx](./nginx.md)
+- [Django](./django.md)
