@@ -1,8 +1,6 @@
 # GitHub Actions
 
-It's weird. Some kind of abstraction like Docker but not Docker.
-
-This is an example configuration yaml for Django:
+Example configuration yaml for Django:
 
 ```yml
 name: Django CI
