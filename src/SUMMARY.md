@@ -7,3 +7,4 @@
 - [Dokku](./dokku.md)
 - [Monads](./monads.md)
 - [Postgresql](./postgresql.md)
+- [nginx](./nginx.md)
