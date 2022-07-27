@@ -9,3 +9,4 @@
 - [Postgresql](./postgresql.md)
 - [nginx](./nginx.md)
 - [Django](./django.md)
+- [Git](./git.md)
